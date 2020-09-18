@@ -75,7 +75,7 @@ public class BaseMarkov  implements MarkovInterface<String> {
 	
 	@Override
 	public ArrayList<String> getFollows(String key){
-		ArrayList<String> follows = new ArrayList<String>();
+		ArrayList<String> follows = new ArrayList<>();
 		
 		int pos = 0;  // location where search for key in text starts
 		
