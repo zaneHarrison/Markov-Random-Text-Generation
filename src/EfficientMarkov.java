@@ -15,7 +15,10 @@ public class EfficientMarkov extends BaseMarkov {
 	@Override
 	public void setTraining(String text) {
 		super.setTraining(text);
+		//TODO: Clear and initialize myMap
 	}
+
+	//TODO: Complete this method
 	@Override
 	public ArrayList<String> getFollows(String key) {
 		return null;

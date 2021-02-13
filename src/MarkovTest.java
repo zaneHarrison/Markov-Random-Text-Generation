@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.*;
 
 public class MarkovTest {
+	protected static String PSEUDO_EOS = "";
 
 	private MarkovInterface<String> getModel(int order) {
 		// TODO: change to EfficientMarkov
@@ -91,6 +92,38 @@ public class MarkovTest {
 				"This test checks if MarkovModel makes a correct " + 
 				"Ngram when the source contains no repeat letters"
 				);
+	}
+
+	/**
+	 * This test runs getFollows on every character and checks if only the last k-gram
+	 * contains PSEUDO_EOS for a simple case.
+	 */
+	@Test
+	public void testPSEUDO_EOS() {
+		String testString = "aaabbbaaabbb";
+		assertTimeout(Duration.ofMillis(10000),()->{
+
+			MarkovInterface<String> markov = getModel(2);
+			markov.setTraining(testString);
+			assertFalse(markov.getFollows("aa").contains(PSEUDO_EOS),
+					"This test checks if a PSEUDO_EOS character is added " +
+							"only after the last k-gram in a given training string."
+			);
+			assertFalse(markov.getFollows("ab").contains(PSEUDO_EOS),
+					"This test checks if a PSEUDO_EOS character is added " +
+							"only after the last k-gram in a given training string."
+			);
+			assertFalse(markov.getFollows("ba").contains(PSEUDO_EOS),
+					"This test checks if a PSEUDO_EOS character is added " +
+							"only after the last k-gram in a given training string."
+			);
+			assertTrue(markov.getFollows("bb").contains(PSEUDO_EOS),
+					"This test checks if a PSEUDO_EOS character is added " +
+							"only after the last k-gram in a given training string."
+			);
+		});
+
+
 	}
 
 }
