@@ -21,11 +21,10 @@ public class EfficientMarkov extends BaseMarkov {
 		for (int index = 0; index <= myText.length() - myOrder; index++) {
 			String sub = myText.substring(index, index + myOrder);
 			myMap.putIfAbsent(sub, new ArrayList<>());
-			if (index + myOrder > myText.length() - 1) {
-				myMap.get(sub).add(PSEUDO_EOS);
+			if (index + myOrder <= myText.length() - 1) {
+				myMap.get(sub).add(myText.substring(index + myOrder, index + myOrder + 1));
 			} else {
-				String followingChar = myText.substring(index + myOrder, index + myOrder + 1);
-				myMap.get(sub).add(followingChar);
+				myMap.get(sub).add(PSEUDO_EOS);
 			}
 		}
 	}
