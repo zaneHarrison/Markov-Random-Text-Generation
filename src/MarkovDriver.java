@@ -30,8 +30,8 @@ public class MarkovDriver {
 
 		//TODO: Change the filename as desired to the different file you want as input.
 		//String filename = "data/trump-sou17.txt";
-		//String filename = "data/bush-sou07.txt";
-		String filename = "data/trumptweets2020.txt";
+		String filename = "data/bush-sou07.txt";
+		//String filename = "data/trumptweets2020.txt";
 
 		if (args.length > 0) {
 			filename = args[1];
@@ -43,7 +43,7 @@ public class MarkovDriver {
 		//TODO: Make sure that you uncomment the MarkovInterface you want to use.
 
 		// only one line below should be uncommented
-		MarkovInterface<String> standard = new BaseMarkov();
+		//MarkovInterface<String> standard = new BaseMarkov();
 		MarkovInterface<String> efficient = new EfficientMarkov();
 		//MarkovInterface<WordGram> wmm = new BaseWordMarkov();
 		//MarkovInterface<WordGram> ewm = new EfficientWordMarkov();
